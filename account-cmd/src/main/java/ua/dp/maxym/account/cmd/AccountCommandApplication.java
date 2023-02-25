@@ -1,13 +1,13 @@
-package ua.dp.maxym.cqrs.core;
+package ua.dp.maxym.account.cmd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CqrsCoreApplication {
+public class AccountCommandApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CqrsCoreApplication.class, args);
+        SpringApplication.run(AccountCommandApplication.class, args);
     }
 
 }

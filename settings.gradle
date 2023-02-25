@@ -1,1 +1,6 @@
-rootProject.name = 'account-cmd'
+rootProject.name = 'demo10microservices'
+
+include 'cqrs-core'
+include 'account-common'
+include 'account-cmd'
+include 'account-query'

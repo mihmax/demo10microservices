@@ -1,10 +1,10 @@
-package ua.dp.maxym.cqrs.core;
+package ua.dp.maxym.account.cmd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CqrsCoreApplicationTests {
+class AccountCommandApplicationTests {
 
     @Test
     void contextLoads() {
