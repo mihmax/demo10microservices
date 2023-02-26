@@ -3,15 +3,23 @@ server:
 
 spring:
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+    # PostgreSQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # MySQL
+    # database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
     open-in-view: on
   datasource:
-    url: jdbc:mysql://localhost:3306/bankAccount?createDatabaseIfNotExist=true
-    username: root
+    # PostgreSQL
+    url: jdbc:postgresql://localhost:5432/bankAccount
+    username: postgres
     password: sa
+    # MySQL
+    # url: jdbc:mysql://localhost:3306/bankAccount
+    # username: root
+    # password: sa
   kafka:
     listener:
       ack-mode: MANUAL_IMMEDIATE

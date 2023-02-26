@@ -26,7 +26,10 @@ dependencies {
     implementation project(path: ':cqrs-core')
     implementation project(path: ':account-common')
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    // MySQL
+    // runtimeOnly 'com.mysql:mysql-connector-j'
+    // PostgreSQL
+    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
