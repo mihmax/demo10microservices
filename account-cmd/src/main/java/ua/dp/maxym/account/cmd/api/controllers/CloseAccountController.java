@@ -29,7 +29,7 @@ public class CloseAccountController {
         try {
             commandDispatcher.send(command);
             return new ResponseEntity<>(new OpenAccountResponse("Bank account closed successfully", id),
-                                        HttpStatus.CREATED);
+                                        HttpStatus.OK);
         } catch (AggregateNotFoundException|IllegalStateException e) {
             log.atWarn().log("Client made bad request {}", e.toString());
             return new ResponseEntity<>(new BaseResponse(e.toString()), HttpStatus.BAD_REQUEST);
