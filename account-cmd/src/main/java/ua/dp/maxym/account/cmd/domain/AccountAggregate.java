@@ -16,6 +16,10 @@ public class AccountAggregate extends AggregateRoot {
     private Boolean active;
     private BigDecimal balance;
 
+    public boolean isActive() {
+        return Boolean.TRUE.equals(active); // null-safe
+    }
+
     public AccountAggregate(OpenAccountCommand command) {
         raiseEvent(AccountOpenedEvent.builder()
                                      .id(command.getId())
@@ -33,7 +37,7 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void depositFunds(BigDecimal amount) {
-        if (active==null || !active)
+        if (active == null || !active)
             throw new IllegalStateException("Funds cannot be deposited into closed account " + this.getId());
         if (amount == null)
             throw new IllegalStateException("Deposit amount must be not null");
@@ -51,13 +55,15 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void withdrawFunds(BigDecimal amount) {
-        if (active==null || !active) throw new IllegalStateException("Funds cannot be withdrawn from closed account " + this.getId());
+        if (active == null || !active)
+            throw new IllegalStateException("Funds cannot be withdrawn from closed account " + this.getId());
         if (amount == null)
             throw new IllegalStateException("Withdrawal amount must be not null");
         if (amount.compareTo(BigDecimal.valueOf(0)) < 0)
             throw new IllegalStateException("Withdrawal amount must be greater than zero, but got " + amount);
         if (balance.compareTo(amount) < 0)
-            throw new IllegalStateException("Withdrawal declined, insufficient funds. Requested " + amount + ", but balance is " + balance);
+            throw new IllegalStateException(
+                    "Withdrawal declined, insufficient funds. Requested " + amount + ", but balance is " + balance);
 
         raiseEvent(FundsWithdrawnEvent.builder()
                                       .id(this.id)
@@ -71,7 +77,8 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void closeAccount() {
-        if (active==null || !active) throw new IllegalStateException("Cannot close already closed account " + this.getId());
+        if (active == null || !active)
+            throw new IllegalStateException("Cannot close already closed account " + this.getId());
         raiseEvent(AccountClosedEvent.builder()
                                      .id(this.id)
                                      .build());
