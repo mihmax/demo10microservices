@@ -1,6 +1,5 @@
 package ua.dp.maxym.account.cmd.api.commands;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.dp.maxym.account.cmd.domain.AccountAggregate;
 import ua.dp.maxym.cqrs.core.handlers.EventSourcingHandler;

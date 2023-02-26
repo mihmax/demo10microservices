@@ -1,6 +1,5 @@
 package ua.dp.maxym.account.cmd.infrastructure;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import ua.dp.maxym.cqrs.core.events.BaseEvent;

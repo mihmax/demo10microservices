@@ -2,7 +2,6 @@ package ua.dp.maxym.account.cmd;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ua.dp.maxym.account.cmd.api.commands.*;
