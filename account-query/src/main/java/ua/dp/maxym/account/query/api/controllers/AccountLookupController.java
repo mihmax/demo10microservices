@@ -106,7 +106,7 @@ public class AccountLookupController {
                                                 .build();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            var safeError = "Failed to complete getAccountByAccountHolder request";
+            var safeError = "Failed to complete getAccountsWithBalance request";
             log.atError().log(safeError);
             log.atError().log(e.toString());
             return new ResponseEntity<>(new AccountLookupResponse(safeError), HttpStatus.INTERNAL_SERVER_ERROR);
