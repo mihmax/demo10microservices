@@ -1,6 +1,7 @@
 package ua.dp.maxym.account.cmd;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +9,7 @@ import ua.dp.maxym.account.cmd.api.commands.*;
 import ua.dp.maxym.cqrs.core.infrastructure.CommandDispatcher;
 
 @SpringBootApplication
+@Slf4j
 public class AccountCommandApplication {
 
     private final CommandDispatcher commandDispatcher;
@@ -20,6 +22,7 @@ public class AccountCommandApplication {
 
     @PostConstruct
     public void registerHandlers() {
+        log.atInfo().log("Registering handlers");
         commandDispatcher.registerHandler(OpenAccountCommand.class, commandHandler::handle);
         commandDispatcher.registerHandler(DepositFundsCommand.class, commandHandler::handle);
         commandDispatcher.registerHandler(WithdrawFundsCommand.class, commandHandler::handle);
