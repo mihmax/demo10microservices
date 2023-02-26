@@ -13,5 +13,5 @@ import ua.dp.maxym.cqrs.core.events.BaseEvent;
 @AllArgsConstructor
 @SuperBuilder
 public class FundsWithdrawnEvent extends BaseEvent {
-    private double depositedAmount;
+    private double withdrawnAmount;
 }
