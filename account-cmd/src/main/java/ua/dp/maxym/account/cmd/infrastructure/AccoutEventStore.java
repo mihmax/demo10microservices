@@ -6,18 +6,20 @@ import ua.dp.maxym.account.cmd.domain.EventStoreRepository;
 import ua.dp.maxym.cqrs.core.events.BaseEvent;
 import ua.dp.maxym.cqrs.core.events.EventModel;
 import ua.dp.maxym.cqrs.core.infrastructure.EventStore;
+import ua.dp.maxym.cqrs.core.producers.EventProducer;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AccoutEventStore implements EventStore {
 
     private final EventStoreRepository eventStoreRepository;
+    private final EventProducer eventProducer;
 
-    public AccoutEventStore(EventStoreRepository eventStoreRepository) {
+    public AccoutEventStore(EventStoreRepository eventStoreRepository, EventProducer eventProducer) {
         this.eventStoreRepository = eventStoreRepository;
+        this.eventProducer = eventProducer;
     }
 
     @Override
@@ -39,8 +41,8 @@ public class AccoutEventStore implements EventStore {
                     .eventData(event)
                     .build();
             var persistedEvent = eventStoreRepository.save(eventModel);
-            if (persistedEvent != null) {
-                // TODO: produce event to Kafka
+            if (!persistedEvent.getId().isEmpty()) {
+                eventProducer.produce(event.getClass().getSimpleName(), event);
             }
         }
     }
