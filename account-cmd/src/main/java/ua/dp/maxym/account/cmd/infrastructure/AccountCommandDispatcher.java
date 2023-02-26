@@ -21,6 +21,7 @@ public class AccountCommandDispatcher implements CommandDispatcher {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void send(BaseCommand command) {
         var handlers = routes.get(command.getClass());
         if (handlers == null || handlers.size()==0)
