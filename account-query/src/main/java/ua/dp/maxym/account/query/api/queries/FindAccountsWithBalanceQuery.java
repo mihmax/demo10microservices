@@ -12,6 +12,6 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 public class FindAccountsWithBalanceQuery extends BaseQuery {
-    private EqualityType equalityType;
-    private BigDecimal balance;
+    private final EqualityType equalityType;
+    private final BigDecimal balance;
 }

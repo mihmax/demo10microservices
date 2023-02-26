@@ -9,5 +9,5 @@ import ua.dp.maxym.cqrs.core.queries.BaseQuery;
 @Data
 @AllArgsConstructor
 public class FindAccountsByIdQuery extends BaseQuery {
-    private String id;
+    private final String id;
 }

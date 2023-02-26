@@ -9,5 +9,5 @@ import ua.dp.maxym.cqrs.core.queries.BaseQuery;
 @Data
 @AllArgsConstructor
 public class FindAccountsByHolderQuery extends BaseQuery {
-    private String accountHolder;
+    private final String accountHolder;
 }
