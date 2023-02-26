@@ -48,6 +48,8 @@ public class AccountAggregate extends AggregateRoot {
     public void withdrawFunds(double amount) {
         if (active==null || !active) throw new IllegalStateException("Funds cannot be withdrawn from closed account " + this.getId());
         if (amount <= 0) throw new IllegalStateException("Withdrawal amount must be greater than zero, but got " + amount);
+        if (this.balance < amount) throw new IllegalStateException("Withdrawal declined, insufficient funds. Requested " + amount + ", but balance is " + balance);
+
         raiseEvent(FundsWithdrawnEvent.builder()
                                       .id(this.id)
                                       .withdrawnAmount(amount)
