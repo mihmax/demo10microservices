@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.dp.maxym.account.cmd.api.commands.CloseAccountCommand;
 import ua.dp.maxym.account.cmd.api.dto.OpenAccountResponse;
+import ua.dp.maxym.account.cmd.infrastructure.AggregateNotFoundException;
 import ua.dp.maxym.account.common.dto.BaseResponse;
 import ua.dp.maxym.cqrs.core.infrastructure.CommandDispatcher;
 
@@ -29,7 +30,7 @@ public class CloseAccountController {
             commandDispatcher.send(command);
             return new ResponseEntity<>(new OpenAccountResponse("Bank account closed successfully", id),
                                         HttpStatus.CREATED);
-        } catch (IllegalStateException e) {
+        } catch (AggregateNotFoundException|IllegalStateException e) {
             log.atWarn().log("Client made bad request {}", e.toString());
             return new ResponseEntity<>(new BaseResponse(e.toString()), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
