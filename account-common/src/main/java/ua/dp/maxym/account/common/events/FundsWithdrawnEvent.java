@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import ua.dp.maxym.cqrs.core.events.BaseEvent;
 
+import java.math.BigDecimal;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class FundsWithdrawnEvent extends BaseEvent {
-    private double withdrawnAmount;
+    private BigDecimal withdrawnAmount;
 }

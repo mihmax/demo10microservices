@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 import ua.dp.maxym.account.common.dto.AccountType;
 import ua.dp.maxym.cqrs.core.events.BaseEvent;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -20,5 +21,5 @@ public class AccountOpenedEvent extends BaseEvent {
     private String accountHolder;
     private AccountType accountType;
     private LocalDateTime createdDate;
-    private double openingBalance;
+    private BigDecimal openingBalance;
 }

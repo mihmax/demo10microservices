@@ -5,10 +5,12 @@ import lombok.EqualsAndHashCode;
 import ua.dp.maxym.account.common.dto.AccountType;
 import ua.dp.maxym.cqrs.core.commands.BaseCommand;
 
+import java.math.BigDecimal;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class OpenAccountCommand extends BaseCommand {
     private String accountHolder;
     private AccountType accountType;
-    private double openingBalance;
+    private BigDecimal openingBalance;
 }
